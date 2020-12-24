@@ -3,7 +3,6 @@
 #program to log and display NASSP CSM/LEM/IU telemetry data
 
 
-
 if __name__ == '__main__':
     
     import socket
@@ -12,8 +11,9 @@ if __name__ == '__main__':
     s.connect(('192.168.1.19', 14242))
     a = 500
     while True:
-        data = s.recv(256)
+        data = s.recv(1024)
         if not data:
             break
-        s.close()
         print(repr(data))
+    
+    s.close()
