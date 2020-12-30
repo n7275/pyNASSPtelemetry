@@ -27,36 +27,37 @@ if __name__ == '__main__':
 
     CSMsocket.connect((ipAddress, CSMport))
     LEMsocket.connect((ipAddress, LEMport))
+    
 
-    try:
+    while True:
+        if CSM == 1:
+            CSMdata = CSMsocket.recv(1024)
+            if not CSMdata:
+                break
+      
+            #CSMbuffer = memoryview(CSMdata).cast('B')
+            
 
-        while True:
-            if CSM == 1:
-                CSMdata = CSMsocket.recv(1024)
-                if not CSMdata:
-                    break
-        
-                CSMbuffer = memoryview(CSMdata).cast('B')
-        
-                for ii in CSMbuffer:
-                    CSMlogFile.write(CSMbuffer[ii] + '\n')
+            
+            for ii in range(len(CSMdata)):
+                #print(CSMdata[ii])
+                CSMlogFile.write(str(CSMdata[ii]) + '\n')
 
-            if LEM == 1:
-                LEMdata = LEMsocket.recv(1024)
-                if not LEMdata:
-                    break
+            
+            
+        if LEM == 1:
+            LEMdata = LEMsocket.recv(1024)
+            if not LEMdata:
+                break
 
-                LEMbuffer = memoryview(LEMdata).cast('B')
+            #LEMbuffer = memoryview(LEMdata).cast('B')
 
-                for jj in LEMbuffer:
-                    LEMlogFile.write(CSMbuffer[jj] + '\n')
-
-    except KeyboardInterupt:
-
-        CSMlogFile.close()
-        LEMlogFile.close()
-
-        CSMsocket.close()
-        LEMsocket.close()
+            for jj in range(len(LEMdata)):
+                #print(LEMdata[jj])
+                LEMlogFile.write(str(LEMdata[jj]) + '\n')
 
 
+    CSMlogFile.close()
+    LEMlogFile.close()
+    CSMsocket.close()
+    LEMsocket.close()

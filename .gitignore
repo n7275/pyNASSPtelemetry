@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+./pyNASSPtelemetry/CSMtelemetryLog.txt
+./pyNASSPtelemetry/LEMtelemetryLog.txt
