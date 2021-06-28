@@ -12,7 +12,7 @@ if __name__ == '__main__':
 
     CSMlogFileName = 'CSMtelemetryLog.txt'
     LEMlogFileName = 'LEMtelemetryLog.txt'
-    ipAddress = '192.168.1.19'
+    ipAddress = '127.0.0.1'
     CSMport = 14242
     LEMport = 14243
 
